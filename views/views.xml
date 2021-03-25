@@ -28,7 +28,7 @@
             </group>
           </sheet>
           <div class="oe_chatter">
-            <field name="message_ids" widget="mail_threads"></field>
+            <field name="message_ids" widget="mail_thread"></field>
           </div>
         </form>
       </field>

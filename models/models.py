@@ -8,9 +8,9 @@ class Movimiento(models.Model):
   _inherit = "mail.thread"
 
   name = fields.Char(string="Nombre", required=True)
-  type_move = fields.Selection(selection=[("ingreso","Ingreso"),("gasto","Gasto")], string="Tipo", default="ingreso", required=True)
-  date = fields.Datetime(string="Fecha")
-  amount = fields.Float(string="Monto")
+  type_move = fields.Selection(selection=[("ingreso","Ingreso"),("gasto","Gasto")], string="Tipo", default="ingreso", track_visibility="onchange", required=True)
+  date = fields.Datetime(string="Fecha", track_visibility="onchange")
+  amount = fields.Float(string="Monto", track_visibility="onchange")
   receipt_image = fields.Binary(string="Foto del Recibo")
   notas = fields.Html(string="Notas")
 
