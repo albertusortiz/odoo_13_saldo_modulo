@@ -1,0 +1,99 @@
+<odoo>
+  <data>
+    <!-- Vista del formulario para crear un Movimiento en nuestro Modulo Saldo Modulo -->
+    <record id="view_form_movimiento" model="ir.ui.view">
+      <field name="name">saldo_modulo.view.form.sa.movimiento</field>
+      <field name="model">sa.movimiento</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name" required="True"></field>
+            </group>
+            <group>
+              <group>
+                <field name="type_move" widget="radio" required="True"></field>
+                <field name="currency_id" invisible="True"></field> <!-- Aqui se agrega un campo combobox para elegir una moneda pero lo ocultamos -->
+                <field name="amount" required="True" widget="monetary" options="{'currency_field':'currency_id'}"></field> <!-- El campo mostro lo personalizamos con el widget monetary y en el paremtro options asigamos el tipo de moneda que mostraremos en este campo-->
+                <field name="date" required="True"></field>
+              </group>
+              <group>
+                <field name="tag_ids" widget="many2many_tags"></field>
+                <field name="category_id"></field>
+              </group>
+            </group>
+            <group>
+              <field name="notas"></field>
+              <field name="receipt_image" widget="image"></field>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_ids" widget="mail_threads"></field>
+          </div>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Acciones de Ventana -->
+    <record id="action_view_movimiento" model="ir.actions.act_window">
+      <field name="name">Movimientos</field> 
+      <field name="res_model">sa.movimiento</field> <!-- . -->
+    </record>
+
+    <record id="action_view_categoria" model="ir.actions.act_window">
+      <field name="name">Categorias</field>
+      <field name="res_model">sa.category</field>
+    </record>
+
+    <record id="action_view_tag" model="ir.actions.act_window">
+      <field name="name">Tags</field>
+      <field name="res_model">sa.tag</field>
+    </record>
+
+    <!-- Accion de ventana que nos va a permitir abrir una vista para las monedas -->
+    <record id="action_view_currency" model="ir.actions.act_window">
+      <field name="name">Monedas</field>
+      <field name="res_model">res.currency</field>
+    </record>
+
+
+    <!-- Menus -->
+    <menuitem id="menu_main_saldo_modulo"  
+              name="Saldo Modulo" 
+              parent="" 
+              action="saldo_modulo.action_view_movimiento"> 
+    </menuitem> <!-- Este es el menu PADRE. -->
+
+    <menuitem id="menu_movimiento" 
+              name="Movimientos" 
+              parent="saldo_modulo.menu_main_saldo_modulo" 
+              action="saldo_modulo.action_view_movimiento">
+    </menuitem> <!-- Este es un menu HIJO de menu_main_saldo_modulo -->
+
+    <menuitem 
+              id="menu_ajustes"
+              name="Ajustes"
+              parent="saldo_modulo.menu_main_saldo_modulo">
+              <!-- action="saldo_modulo.action_view_categoria" -->
+    </menuitem>
+
+    <menuitem id="menu_categorias" 
+              name="Categorias" 
+              parent="saldo_modulo.menu_ajustes" 
+              action="saldo_modulo.action_view_categoria">
+    </menuitem> <!-- Este es un menu HIJO de menu_ajustes -->
+
+    <menuitem id="menu_tag" 
+              name="Etiquetas" 
+              parent="saldo_modulo.menu_ajustes" 
+              action="saldo_modulo.action_view_tag">
+    </menuitem> <!-- Este es un menu HIJO de menu_ajustes -->
+
+    <menuitem id="menu_currency"
+              name="Moneda"
+              parent="saldo_modulo.menu_ajustes"
+              action="action_view_currency">
+    </menuitem>
+  </data>
+</odoo>

@@ -1,0 +1,33 @@
+<odoo>
+  <data>
+    <record id="model_access_movimiento" model="ir.model.access">
+      <field name="name">model.access.movimiento</field>
+      <field name="model_id" ref="saldo_modulo.model_sa_movimiento"></field>
+      <field name="group_id" ref="base.group_system"></field> <!-- Grupo de Administración/Ajustes -->
+      <field name="perm_read" eval="True"/> <!-- Leer  -->
+      <field name="perm_create" eval="True"/> <!-- Crear -->
+      <field name="perm_write" eval="True"/> <!-- Modificar -->
+      <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
+    </record>
+
+    <record id="model_access_categoria" model="ir.model.access">
+      <field name="name">model.access.categoria</field>
+      <field name="model_id" ref="saldo_modulo.model_sa_category"></field>
+      <field name="group_id" ref="base.group_system"></field> <!-- Grupo de Administración/Ajustes -->
+      <field name="perm_read" eval="True"/> <!-- Leer  -->
+      <field name="perm_create" eval="True"/> <!-- Crear -->
+      <field name="perm_write" eval="True"/> <!-- Modificar -->
+      <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
+    </record>
+
+    <record id="model_access_tags" model="ir.model.access">
+      <field name="name">model.access.tags</field>
+      <field name="model_id" ref="saldo_modulo.model_sa_tag"></field>
+      <field name="group_id" ref="base.group_system"></field> <!-- Grupo de Administración/Ajustes -->
+      <field name="perm_read" eval="True"/> <!-- Leer  -->
+      <field name="perm_create" eval="True"/> <!-- Crear -->
+      <field name="perm_write" eval="True"/> <!-- Modificar -->
+      <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
+    </record>
+  </data>
+</odoo>
