@@ -44,7 +44,7 @@
           <field name="name"></field>
           <field name="type_move" optional="show"></field>
           <field name="amount" widget="monetary" options="{'currency_field':'currency_id'}" optional="show"></field>
-          <field name="tag_ids" optional="hide"></field>
+          <field name="tag_ids" optional="hide" widget="many2many_tags" string="Etiquetas"></field>
           <field name="category_id" optional="hide"></field>
           <field name="currency_id" invisible="1"></field>
         </tree>
