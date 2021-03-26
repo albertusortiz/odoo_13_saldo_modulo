@@ -61,7 +61,7 @@
           <field name="notas"></field>
           <field name="category_id"></field>
           <field name="tag_ids" string="Etiqueta"></field>
-
+          <!-- Agregando FILTROS predeterminados en nuestra vista.-->
           <filter name="filter_tipo_ingresos"
                   string="Ingresos" 
                   domain="[('type_move','=','ingreso')]">
@@ -70,7 +70,7 @@
                   string="Gastos"
                   domain="[('type_move','=','gasto')]">
           </filter>
-          <separator></separator>
+          <separator></separator> <!-- Agregando un separador entre filtros -->
           <filter name="filter_today" 
                   string="Hoy"
                   domain="[
@@ -85,6 +85,15 @@
                             ('date', '&gt;=', (context_today()-datetime.timedelta(days=7)).strftime('%Y-%m-%d 00:00:00'))
                           ]">
           </filter> <!-- Ultimos 7 dias -->
+          <!-- Editando filtros de AGRUPACION en la busqueda-->
+          <filter name="group_type_move"
+                  string="Tipo"
+                  context="{'group_by':'type_move'}">
+          </filter>
+          <filter name="group_type_date"
+                  string="Fecha"
+                  context="{'group_by':'date'}">
+          </filter>
         </search>
       </field>
     </record>
