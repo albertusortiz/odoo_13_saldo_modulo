@@ -30,11 +30,11 @@ class Category(models.Model):
 
   def ver_movimientos(self):
     return {
-      "type":"ir.actions.act_window",
+      "type":"ir.actions.act_window", #Accion de abrir nueva ventana
       "name":"Movimientos de categoria: " + self.name,
-      "res_model":"sa.movimiento",
-      "views":[[False,"tree"]],
-      "target":"self",
+      "res_model":"sa.movimiento", #Modelo a la ventana que voy a mostrar
+      "views":[[False,"tree"]], #Definimos que vista que se va a visualizar y sera una de tipo lista. El false es un ID donde podremos hacer referencia a una vista.
+      "target":"self", #Como queremos ver la nueva vista, si dentro de la vista actual (self) o en una nueva vista flotante (new).
       "domain":[["category_id","=",self.id]]
     }
 
