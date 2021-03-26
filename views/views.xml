@@ -33,8 +33,7 @@
         </form>
       </field>
     </record>
-
-
+    <!-- Vista de tipo lista para mostrar todos los registros-->
     <record id="view_tree_movimiento" model="ir.ui.view">
       <field name="name">view.tree.sa.movimiento</field>
       <field name="model">sa.movimiento</field>
@@ -50,8 +49,7 @@
         </tree>
       </field>
     </record>
-
-
+    <!-- Personalizando la vista del campo de busqueda de la vista lista-->
     <record id="view_search_movimiento" model="ir.ui.view">
       <field name="name">view.search.sa.movimiento</field>
       <field name="model">sa.movimiento</field>
