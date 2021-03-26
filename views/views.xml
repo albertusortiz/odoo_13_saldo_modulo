@@ -1,8 +1,9 @@
 <odoo>
   <data>
+    <!-- Vistas de MOVIMIENTOS-->
     <!-- Vista del formulario para crear un Movimiento en nuestro Modulo Saldo Modulo -->
     <record id="view_form_movimiento" model="ir.ui.view">
-      <field name="name">saldo_modulo.view.form.sa.movimiento</field>
+      <field name="name">view.form.sa.movimiento</field>
       <field name="model">sa.movimiento</field>
       <field name="arch" type="xml">
         <form>
@@ -95,8 +96,26 @@
         </search>
       </field>
     </record>
-
-
+    <!-- Vistas de CATEGORIAS-->
+    <!-- Vista de formulario para categorias-->
+    <record id="view_form_category" model="ir.ui.view">
+      <field name="name">view.form.sa.category</field>
+      <field name="model">sa.category</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"></field>
+              </group>
+              <group>
+                <button name="ver_movimientos" type="object" string="Ver Movimientos"></button>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
     <!-- Acciones de Ventana -->
     <record id="action_view_movimiento" model="ir.actions.act_window">
       <field name="name">Movimientos</field> 
