@@ -21,6 +21,7 @@
               <group>
                 <field name="tag_ids" widget="many2many_tags"></field>
                 <field name="category_id"></field>
+                <field name="user_id"></field>
               </group>
             </group>
             <group>

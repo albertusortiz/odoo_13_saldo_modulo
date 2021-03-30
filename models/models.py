@@ -16,7 +16,7 @@ class Movimiento(models.Model):
 
   currency_id = fields.Many2one("res.currency", default=33) # Traemos el ID del modelo res.currency para tener acceso a la tabla de monedas que existe en Odoo
 
-  user_id = fields.Many2one("res.users", string="Usuario") # Campo relacionado con el modelo res.users
+  user_id = fields.Many2one("res.users", string="Usuario", default=lambda self:self.env.user.id) # Campo relacionado con el modelo res.users
   category_id = fields.Many2one("sa.category", string="Categoria") # Campo relacionado con el modelo sa.category
 
   tag_ids = fields.Many2many("sa.tag","sa_mov_sa_tag_rel","movimiento_id","tag_id") #sa_movimientos
