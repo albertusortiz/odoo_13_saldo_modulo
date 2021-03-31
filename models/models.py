@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class Movimiento(models.Model):
   _name = "sa.movimiento" # sa_movimiento
@@ -20,6 +21,11 @@ class Movimiento(models.Model):
   category_id = fields.Many2one("sa.category", string="Categoria") # Campo relacionado con el modelo sa.category
 
   tag_ids = fields.Many2many("sa.tag","sa_mov_sa_tag_rel","movimiento_id","tag_id") #sa_movimientos
+
+  @api.constrains("amount")
+  def _check_amount(self):
+    if not(self.amount>=0 and self.amount<=100000):
+      raise ValidationError("El monto debe encontrarse entre 0 y 100,000.")
 
 
 class Category(models.Model):
