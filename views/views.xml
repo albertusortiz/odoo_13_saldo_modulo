@@ -138,9 +138,22 @@
       <field name="name">Monedas</field>
       <field name="res_model">res.currency</field>
     </record>
+    <!-- Creando una accion de servidor-->
+    <record id="action_server_mi_cuenta" model="ir.actions.server">
+      <field name="name">Mi Cuenta</field>
+      <field name="model_id" ref="base.model_res_users"></field> <!-- saldo_modulo.model_sa_movimiento -->
+      <field name="state">code</field>
+      <field name="code">action = model.mi_cuenta()</field>
+    </record>
 
 
     <!-- Menus -->
+    <menuitem id="menu_mi_cuenta"
+              name="Mi cuenta"
+              parent=""
+              action="saldo_modulo.action_server_mi_cuenta">
+    </menuitem>
+
     <menuitem id="menu_main_saldo_modulo"  
               name="Saldo Modulo" 
               parent="" 

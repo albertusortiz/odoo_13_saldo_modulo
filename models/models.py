@@ -55,3 +55,13 @@ class Tag(models.Model):
 class ResUsers(models.Model):
   _inherit = "res.users"
   movimiento_ids = fields.One2many("sa.movimiento","user_id")
+
+  def mi_cuenta(self): #Devolviendo una accion de ventana
+    return {
+      "type": "ir.actions.act_window",
+      "name": "Mi cuenta",
+      "res_model": "res.users",
+      "res_id": self.env.user.id,
+      "target": "self",
+      "views": [(False,"form")]
+    }
