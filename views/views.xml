@@ -117,6 +117,20 @@
         </form>
       </field>
     </record>
+
+    <!-- Vista de formulario para extender la vista res.users y agregar el field MOVIMIENTOS-->
+    <record id="view_res_users_add_movimientos" model="ir.ui.view">
+      <field name="name">view.res.users.add.movimientos</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_simple_form"></field>
+      <field name="arch" type="xml">
+        <xpath expr="sheet" position="inside">
+          <group>
+            <field name="movimiento_ids"></field>
+          </group>
+        </xpath>
+      </field>
+    </record>
     <!-- Acciones de Ventana -->
     <record id="action_view_movimiento" model="ir.actions.act_window">
       <field name="name">Movimientos</field> 
