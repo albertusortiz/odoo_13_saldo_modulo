@@ -27,6 +27,15 @@ class Movimiento(models.Model):
     if not(self.amount>=0 and self.amount<=100000):
       raise ValidationError("El monto debe encontrarse entre 0 y 100,000.")
 
+  @api.onchange("type_move")
+  def onchange_type_move(self):
+    if self.type_move == 'ingreso':
+      self.name = "Ingreso: "
+      self.amount = 100
+    elif self.type_move == "gasto":
+      self.name = "Gasto: "
+      self.amount = 50
+
 
 class Category(models.Model):
   _name = "sa.category" # sa_category

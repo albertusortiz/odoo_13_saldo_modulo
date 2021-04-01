@@ -9,11 +9,11 @@
         <form>
           <sheet>
             <group>
+              <field name="type_move" widget="radio" required="True"></field>
               <field name="name" required="True"></field>
             </group>
             <group>
               <group>
-                <field name="type_move" widget="radio" required="True"></field>
                 <field name="currency_id" invisible="True"></field> <!-- Aqui se agrega un campo combobox para elegir una moneda pero lo ocultamos -->
                 <field name="amount" required="True" widget="monetary" options="{'currency_field':'currency_id'}"></field> <!-- El campo mostro lo personalizamos con el widget monetary y en el paremtro options asigamos el tipo de moneda que mostraremos en este campo-->
                 <field name="date" required="True"></field>
