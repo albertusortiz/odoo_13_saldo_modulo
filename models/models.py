@@ -22,6 +22,8 @@ class Movimiento(models.Model):
 
   tag_ids = fields.Many2many("sa.tag","sa_mov_sa_tag_rel","movimiento_id","tag_id") #sa_movimientos
 
+  email = fields.Char(related="user_id.email", string="Correo Electrónico") # Jalamos el campo email desde el modelo res.users con el campo user_id
+
   @api.constrains("amount")
   def _check_amount(self):
     if not(self.amount>=0 and self.amount<=100000):
