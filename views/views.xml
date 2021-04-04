@@ -21,11 +21,13 @@
               <group>
                 <field  name="tag_ids" 
                         widget="many2many_tags"
-                        context="{'default_type_move':type_move}">
+                        context="{'default_type_move':type_move}"
+                        attrs="{'readonly':[('amount','&lt;',50)]}">
                 </field>
                 <field  name="category_id" 
                         domain="[('type_move','=',type_move)]"
-                        context="{'default_type_move':type_move,'default_name':'Nueva categoria'}">
+                        context="{'default_type_move':type_move,'default_name':'Nueva categoria'}"
+                        attrs="{'required':[('amount','&gt;',100)]}">
                 </field>
                 <field name="user_id"></field>
                 <field name="email"></field>
@@ -33,7 +35,10 @@
             </group>
             <group>
               <field name="notas"></field>
-              <field name="receipt_image" widget="image"></field>
+              <field  name="receipt_image" 
+                      widget="image"
+                      attrs="{'invisible':[('type_move','=','ingreso')]}">
+              </field>
             </group>
           </sheet>
           <div class="oe_chatter">
