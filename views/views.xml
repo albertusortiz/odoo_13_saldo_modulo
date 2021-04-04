@@ -20,7 +20,7 @@
               </group>
               <group>
                 <field name="tag_ids" widget="many2many_tags"></field>
-                <field name="category_id"></field>
+                <field name="category_id" domain="[('type_move','=',type_move)]" widget="radio"></field>
                 <field name="user_id"></field>
                 <field name="email"></field>
               </group>
@@ -107,10 +107,9 @@
         <form>
           <sheet>
             <group>
-              <group>lk
-                <field name="name"></field>
-              </group>
               <group>
+                <field name="name"></field>
+                <field name="type_move"></field>
                 <button name="ver_movimientos" type="object" string="Ver Movimientos"></button>
               </group>
             </group>

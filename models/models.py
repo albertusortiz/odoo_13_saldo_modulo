@@ -61,6 +61,7 @@ class Category(models.Model):
   _description = "Categoria"
 
   name = fields.Char(string="Nombre")
+  type_move = fields.Selection(selection=[("ingreso","Ingreso"),("gasto","Gasto")], string="Tipo", default="ingreso", required=True)
 
   def ver_movimientos(self):
     return {
