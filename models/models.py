@@ -79,6 +79,7 @@ class Tag(models.Model):
   _description = "Tag"
 
   name = fields.Char(string="Nombre")
+  type_move = fields.Selection(selection=[("ingreso","Ingreso"),("gasto","Gasto")], string="Tipo", default="ingreso", required=True)
 
 
 class ResUsers(models.Model):

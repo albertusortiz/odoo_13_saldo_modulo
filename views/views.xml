@@ -19,8 +19,14 @@
                 <field name="date" required="True"></field>
               </group>
               <group>
-                <field name="tag_ids" widget="many2many_tags"></field>
-                <field name="category_id" domain="[('type_move','=',type_move)]" widget="radio"></field>
+                <field  name="tag_ids" 
+                        widget="many2many_tags"
+                        context="{'default_type_move':type_move}">
+                </field>
+                <field  name="category_id" 
+                        domain="[('type_move','=',type_move)]"
+                        context="{'default_type_move':type_move,'default_name':'Nueva categoria'}">
+                </field>
                 <field name="user_id"></field>
                 <field name="email"></field>
               </group>
