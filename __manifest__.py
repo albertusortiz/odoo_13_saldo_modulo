@@ -6,6 +6,7 @@
   "depends":["base","mail"],
   "data":[
     "security/ir_model_access.xml",
+    "security/res_groups.xml",
     "views/views.xml"
   ]
 }

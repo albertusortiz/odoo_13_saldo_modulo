@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+    <record id="module_saldo_modulo" model="ir.module.category">
+      <field name="name">Saldo Modulo</field>
+    </record>
+  
+    <record id="res_groups_administrador" model="res.groups">
+      <field name="name">Adminsitrador</field>
+      <field name="category_id" ref="saldo_modulo.module_saldo_modulo"></field>
+    </record>
+  
+    <record id="res_groups_user_free" model="res.groups">
+      <field name="name">Usuario Free</field>
+      <field name="category_id" ref="saldo_modulo.module_saldo_modulo"></field>
+    </record>
+  
+    <record id="res_groups_user_premium" model="res.groups">
+      <field name="name">Usuario Premium</field>
+      <field name="category_id" ref="saldo_modulo.module_saldo_modulo"></field>
+    </record>
+  </data>
+</odoo>
