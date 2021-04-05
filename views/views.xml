@@ -49,6 +49,54 @@
         </form>
       </field>
     </record>
+
+    <record id="view_form_movimiento_segun_tipo" model="ir.ui.view">
+      <field name="name">view.form.sa.movimiento.segun.tipo</field>
+      <field name="model">sa.movimiento</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="type_move" widget="radio" required="True" invisible="True"></field>
+              <field name="name" required="True"></field>
+            </group>
+            <group>
+              <group>
+                <field name="currency_id" invisible="True"></field> <!-- Aqui se agrega un campo combobox para elegir una moneda pero lo ocultamos -->
+                <field name="amount" required="True" widget="monetary" options="{'currency_field':'currency_id'}"></field> <!-- El campo mostro lo personalizamos con el widget monetary y en el paremtro options asigamos el tipo de moneda que mostraremos en este campo-->
+                <field name="date" required="True"></field>
+              </group>
+              <group>
+                <field  name="tag_ids" 
+                        widget="many2many_tags"
+                        context="{'default_type_move':type_move}"
+                        attrs="{'readonly':[('amount','&lt;',50)]}"
+                        options="{'no_quick_create':True,'no_create_edit':True}">
+                </field>
+                <field  name="category_id" 
+                        domain="[('type_move','=',type_move)]"
+                        context="{'default_type_move':type_move,'default_name':'Nueva categoria'}"
+                        attrs="{'required':[('amount','&gt;',100)]}"
+                        options="{'no_open':True}">
+                </field>
+                <field name="user_id"></field>
+                <field name="email"></field>
+              </group>
+            </group>
+            <group>
+              <field name="notas"></field>
+              <field  name="receipt_image" 
+                      widget="image"
+                      attrs="{'invisible':[('type_move','=','ingreso')]}">
+              </field>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_ids" widget="mail_thread"></field>
+          </div>
+        </form>
+      </field>
+    </record>
     <!-- Vista de tipo lista para mostrar todos los registros-->
     <record id="view_tree_movimiento" model="ir.ui.view">
       <field name="name">view.tree.sa.movimiento</field>
@@ -58,6 +106,22 @@
           <field name="date" optional="show"></field>
           <field name="name"></field>
           <field name="type_move" optional="show"></field>
+          <field name="amount" widget="monetary" options="{'currency_field':'currency_id'}" optional="show"></field>
+          <field name="tag_ids" optional="hide" widget="many2many_tags" string="Etiquetas"></field>
+          <field name="category_id" optional="hide"></field>
+          <field name="currency_id" invisible="1"></field>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_tree_movimiento_segun_tipo" model="ir.ui.view">
+      <field name="name">view.tree.sa.movimiento.segun.tipo</field>
+      <field name="model">sa.movimiento</field>
+      <field name="arch" type="xml">
+        <tree decoration-success="type_move == 'ingreso'" decoration-danger="type_move == 'gasto'">
+          <field name="date" optional="show"></field>
+          <field name="name"></field>
+          <field name="type_move" invisible="True"></field>
           <field name="amount" widget="monetary" options="{'currency_field':'currency_id'}" optional="show"></field>
           <field name="tag_ids" optional="hide" widget="many2many_tags" string="Etiquetas"></field>
           <field name="category_id" optional="hide"></field>
@@ -230,6 +294,17 @@
       </field>
     </record>
 
+    <!-- Accion de Ventana VIEW -->
+    <record id="action_window_view_tree_movimientos_segun_tipo" model="ir.actions.act_window.view">
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="saldo_modulo.view_tree_movimiento_segun_tipo"></field>
+    </record>
+
+    <record id="action_window_view_form_movimientos_segun_tipo" model="ir.actions.act_window.view">
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="saldo_modulo.view_form_movimiento_segun_tipo"></field>
+    </record>
+
     <!-- Acciones de Ventana -->
     <record id="action_view_movimiento_ingresos" model="ir.actions.act_window">
       <field name="name">Ingresos</field> 
@@ -238,6 +313,7 @@
       <field name="context">{'default_type_move':'ingreso'}</field>
       <field name="search_view_id" ref="saldo_modulo.view_search_movimiento_ingresos"></field>
       <field name="view_mode">tree,form,calendar</field>
+      <field name="view_ids" eval="[(4,ref('saldo_modulo.action_window_view_tree_movimientos_segun_tipo')),(4,ref('saldo_modulo.action_window_view_form_movimientos_segun_tipo'))]"></field>
       <field name="help" type="xml">
         <h1>Empieza creando tu primer movimiento</h1>
       </field>
@@ -249,6 +325,7 @@
       <field name="domain">[('type_move','=','gasto')]</field>
       <field name="context">{'default_type_move':'gasto'}</field>
       <field name="search_view_id" ref="saldo_modulo.view_search_movimiento_gastos"></field>
+      <field name="view_ids" eval="[(4,ref('saldo_modulo.action_window_view_tree_movimientos_segun_tipo')),(4,ref('saldo_modulo.action_window_view_form_movimientos_segun_tipo'))]"></field>
     </record>
 
     <record id="action_view_movimiento" model="ir.actions.act_window">
@@ -316,8 +393,7 @@
               action="saldo_modulo.action_view_movimiento_gastos">
     </menuitem>
 
-    <menuitem 
-              id="menu_ajustes"
+    <menuitem id="menu_ajustes"
               name="Ajustes"
               parent="saldo_modulo.menu_main_saldo_modulo">
               <!-- action="saldo_modulo.action_view_categoria" -->
