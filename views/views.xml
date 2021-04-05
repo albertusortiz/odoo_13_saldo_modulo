@@ -22,12 +22,14 @@
                 <field  name="tag_ids" 
                         widget="many2many_tags"
                         context="{'default_type_move':type_move}"
-                        attrs="{'readonly':[('amount','&lt;',50)]}">
+                        attrs="{'readonly':[('amount','&lt;',50)]}"
+                        options="{'no_quick_create':True,'no_create_edit':True}">
                 </field>
                 <field  name="category_id" 
                         domain="[('type_move','=',type_move)]"
                         context="{'default_type_move':type_move,'default_name':'Nueva categoria'}"
-                        attrs="{'required':[('amount','&gt;',100)]}">
+                        attrs="{'required':[('amount','&gt;',100)]}"
+                        options="{'no_open':True}">
                 </field>
                 <field name="user_id"></field>
                 <field name="email"></field>
