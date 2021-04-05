@@ -165,7 +165,8 @@
 
     <record id="action_view_movimiento" model="ir.actions.act_window">
       <field name="name">Movimientos</field> 
-      <field name="res_model">sa.movimiento</field> <!-- . -->
+      <field name="res_model">sa.movimiento</field> 
+      <field name="limit">2</field>
     </record>
 
     <record id="action_view_categoria" model="ir.actions.act_window">
