@@ -154,6 +154,9 @@
       <field name="res_model">sa.movimiento</field>
       <field name="domain">[('type_move','=','ingreso')]</field>
       <field name="context">{'default_type_move':'ingreso'}</field>
+      <field name="help" type="xml">
+        <h1>Empieza creando tu primer movimiento</h1>
+      </field>
     </record>
     
     <record id="action_view_movimiento_gastos" model="ir.actions.act_window">
@@ -166,7 +169,7 @@
     <record id="action_view_movimiento" model="ir.actions.act_window">
       <field name="name">Movimientos</field> 
       <field name="res_model">sa.movimiento</field> 
-      <field name="limit">2</field>
+      <field name="limit">5</field>
     </record>
 
     <record id="action_view_categoria" model="ir.actions.act_window">
