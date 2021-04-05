@@ -153,12 +153,14 @@
       <field name="name">Ingresos</field> 
       <field name="res_model">sa.movimiento</field>
       <field name="domain">[('type_move','=','ingreso')]</field>
+      <field name="context">{'default_type_move':'ingreso'}</field>
     </record>
     
     <record id="action_view_movimiento_gastos" model="ir.actions.act_window">
       <field name="name">Gastos</field> 
       <field name="res_model">sa.movimiento</field> <!-- . -->
       <field name="domain">[('type_move','=','gasto')]</field>
+      <field name="context">{'default_type_move':'gasto'}</field>
     </record>
 
     <record id="action_view_movimiento" model="ir.actions.act_window">
