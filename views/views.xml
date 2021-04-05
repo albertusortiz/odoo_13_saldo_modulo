@@ -220,6 +220,16 @@
       </field>
     </record>
 
+    <record id="view_calendar_movimientos_ingresos" model="ir.ui.view">
+      <field name="name">view.calendar.movimientos.ingresos</field>
+      <field name="model">sa.movimiento</field>
+      <field name="arch" type="xml">
+        <calendar date_start="date" mode="month"> <!-- week | day -->
+          <field name="name"></field>
+        </calendar>
+      </field>
+    </record>
+
     <!-- Acciones de Ventana -->
     <record id="action_view_movimiento_ingresos" model="ir.actions.act_window">
       <field name="name">Ingresos</field> 
@@ -227,6 +237,7 @@
       <field name="domain">[('type_move','=','ingreso')]</field>
       <field name="context">{'default_type_move':'ingreso'}</field>
       <field name="search_view_id" ref="saldo_modulo.view_search_movimiento_ingresos"></field>
+      <field name="view_mode">tree,form,calendar</field>
       <field name="help" type="xml">
         <h1>Empieza creando tu primer movimiento</h1>
       </field>
@@ -243,7 +254,7 @@
     <record id="action_view_movimiento" model="ir.actions.act_window">
       <field name="name">Movimientos</field> 
       <field name="res_model">sa.movimiento</field> 
-      <field name="limit">5</field>
+      <field name="limit">4</field>
     </record>
 
     <record id="action_view_categoria" model="ir.actions.act_window">
