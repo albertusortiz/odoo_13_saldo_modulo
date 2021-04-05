@@ -147,7 +147,20 @@
         </xpath>
       </field>
     </record>
+
     <!-- Acciones de Ventana -->
+    <record id="action_view_movimiento_ingresos" model="ir.actions.act_window">
+      <field name="name">Ingresos</field> 
+      <field name="res_model">sa.movimiento</field>
+      <field name="domain">[('type_move','=','ingreso')]</field>
+    </record>
+    
+    <record id="action_view_movimiento_gastos" model="ir.actions.act_window">
+      <field name="name">Gastos</field> 
+      <field name="res_model">sa.movimiento</field> <!-- . -->
+      <field name="domain">[('type_move','=','gasto')]</field>
+    </record>
+
     <record id="action_view_movimiento" model="ir.actions.act_window">
       <field name="name">Movimientos</field> 
       <field name="res_model">sa.movimiento</field> <!-- . -->
@@ -162,7 +175,6 @@
       <field name="name">Tags</field>
       <field name="res_model">sa.tag</field>
     </record>
-
     <!-- Accion de ventana que nos va a permitir abrir una vista para las monedas -->
     <record id="action_view_currency" model="ir.actions.act_window">
       <field name="name">Monedas</field>
@@ -187,14 +199,31 @@
     <menuitem id="menu_main_saldo_modulo"  
               name="Saldo Modulo" 
               parent="" 
-              action="saldo_modulo.action_view_movimiento"> 
+              action="saldo_modulo.action_view_movimiento">  
     </menuitem> <!-- Este es el menu PADRE. -->
 
     <menuitem id="menu_movimiento" 
               name="Movimientos" 
-              parent="saldo_modulo.menu_main_saldo_modulo" 
-              action="saldo_modulo.action_view_movimiento">
+              parent="saldo_modulo.menu_main_saldo_modulo">
     </menuitem> <!-- Este es un menu HIJO de menu_main_saldo_modulo -->
+
+    <menuitem id="menu_movimiento_todo" 
+              name="Todos" 
+              parent="saldo_modulo.menu_movimiento"
+              action="saldo_modulo.action_view_movimiento">
+    </menuitem>
+
+    <menuitem id="menu_movimiento_ingresos" 
+              name="Ingresos" 
+              parent="saldo_modulo.menu_movimiento"
+              action="saldo_modulo.action_view_movimiento_ingresos">
+    </menuitem>
+
+    <menuitem id="menu_movimiento_gastos" 
+              name="Gastos" 
+              parent="saldo_modulo.menu_movimiento"
+              action="saldo_modulo.action_view_movimiento_gastos">
+    </menuitem>
 
     <menuitem 
               id="menu_ajustes"
