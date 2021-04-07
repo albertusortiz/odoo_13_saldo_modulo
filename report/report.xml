@@ -13,5 +13,14 @@
       <field name="header_line" eval="False"></field>
       <field name="header_spacing" eval="35"></field>
     </record>
+
+    <report id="saldo_modulo.action_report_detalle_movimiento"
+            string="Detalle de Movimiento"
+            model="sa.movimiento"
+            report_type="qweb-pdf"
+            paperformat="saldo_modulo.paperformat_portrait_a5"
+            name="saldo_modulo.report_detalle_movimiento" 
+            print_report_name="'Detalle de movimiento %s' % (object.name)">
+    </report> <!-- El parametro NAME hace referencia a la plantilla que estamos creando para este documento-->
   </data>
 </odoo>
