@@ -31,8 +31,8 @@
                         attrs="{'required':[('amount','&gt;',100)]}"
                         options="{'no_open':True}">
                 </field>
-                <field name="user_id"></field>
-                <field name="email"></field>
+                <field name="user_id" groups="saldo_modulo.res_groups_administrador"></field>
+                <field name="email" groups="saldo_modulo.res_groups_administrador"></field>
               </group>
             </group>
             <group>
@@ -110,6 +110,7 @@
           <field name="tag_ids" optional="hide" widget="many2many_tags" string="Etiquetas"></field>
           <field name="category_id" optional="hide"></field>
           <field name="currency_id" invisible="1"></field>
+          <field name="create_uid"  groups="saldo_modulo.res_groups_administrador"></field>
         </tree>
       </field>
     </record>
