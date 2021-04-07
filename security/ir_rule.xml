@@ -1,7 +1,7 @@
-<odo>
+<odoo>
   <data>
     <record id="ir_rule_user_free_mostrar_mov_propios" model="ir.rule">
-      <filed name="name">Mostrar movimientos propios</filed>
+      <field name="name">Mostrar movimientos propios</field>
       <field name="model_id" ref="saldo_modulo.model_sa_movimiento"></field>
       <field name="domain_force">
         [('create_uid','=',user.id)]
@@ -12,5 +12,31 @@
       <field name="perm_unlink" eval="True"></field>
       <field name="perm_write" eval="True"></field>
     </record>
+
+    <record id="ir_rule_user_free_mostrar_categorias_propias" model="ir.rule">
+      <field name="name">Mostrar categorias propias</field>
+      <field name="model_id" ref="saldo_modulo.model_sa_category"></field>
+      <field name="domain_force">
+        [('create_uid','=',user.id)]
+      </field>
+      <field name="groups" eval="[(4,ref('saldo_modulo.res_groups_user_free')),(4,ref('saldo_modulo.res_groups_user_premium'))]"></field>
+      <field name="perm_read" eval="True"></field>
+      <field name="perm_create" eval="True"></field>
+      <field name="perm_unlink" eval="True"></field>
+      <field name="perm_write" eval="True"></field>
+    </record>
+
+    <record id="ir_rule_user_free_mostrar_tags_propias" model="ir.rule">
+      <field name="name">Mostrar etiquetas propias</field>
+      <field name="model_id" ref="saldo_modulo.model_sa_tag"></field>
+      <field name="domain_force">
+        [('create_uid','=',user.id)]
+      </field>
+      <field name="groups" eval="[(4,ref('saldo_modulo.res_groups_user_free')),(4,ref('saldo_modulo.res_groups_user_premium'))]"></field>
+      <field name="perm_read" eval="True"></field>
+      <field name="perm_create" eval="True"></field>
+      <field name="perm_unlink" eval="True"></field>
+      <field name="perm_write" eval="True"></field>
+    </record>
   </data>
-</odo>
+</odoo>
