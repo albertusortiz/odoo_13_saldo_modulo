@@ -277,6 +277,7 @@
           <group>
             <field name="email"></field>
             <field name="movimiento_ids"></field>
+            <field name="count_movimientos"></field>
             <field name="total_ingresos"></field>
             <field name="total_gastos"></field>
           </group>
