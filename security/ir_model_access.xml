@@ -29,5 +29,37 @@
       <field name="perm_write" eval="True"/> <!-- Modificar -->
       <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
     </record>
+
+    
+    <!-- Usuario FREE -->
+    <record id="model_access_group_free_movimiento" model="ir.model.access"> <!-- Cambio el id del registro para identificar este modelo-->
+      <field name="name">model.access.groups.free.movimiento</field> <!-- Cambiando el nombre a este modelo de acceso al usuario-->
+      <field name="model_id" ref="saldo_modulo.model_sa_movimiento"></field>
+      <field name="group_id" ref="saldo_modulo.res_groups_user_free"></field> <!-- Agregando al USUARIO FREE en el grupo de Administración/Ajustes -->
+      <field name="perm_read" eval="True"/> <!-- Leer  -->
+      <field name="perm_create" eval="True"/> <!-- Crear -->
+      <field name="perm_write" eval="True"/> <!-- Modificar -->
+      <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
+    </record>
+
+    <record id="model_access_group_free_categoria" model="ir.model.access"> <!-- Cambio el id del registro para identificar este modelo-->
+      <field name="name">model.access.groups.free.categoria</field> <!-- Cambiando el nombre a este modelo de acceso al usuario-->
+      <field name="model_id" ref="saldo_modulo.model_sa_category"></field>
+      <field name="group_id" ref="saldo_modulo.res_groups_user_free"></field> <!-- Agregando al USUARIO FREE en el grupo de Administración/Ajustes -->
+      <field name="perm_read" eval="True"/> <!-- Leer  -->
+      <field name="perm_create" eval="True"/> <!-- Crear -->
+      <field name="perm_write" eval="True"/> <!-- Modificar -->
+      <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
+    </record>
+
+    <record id="model_access_group_free_tags" model="ir.model.access"> <!-- Cambio el id del registro para identificar este modelo-->
+      <field name="name">model.access.groups.free.tags</field> <!-- Cambiando el nombre a este modelo de acceso al usuario-->
+      <field name="model_id" ref="saldo_modulo.model_sa_tag"></field>
+      <field name="group_id" ref="saldo_modulo.res_groups_user_free"></field> <!-- Agregando al USUARIO FREE en el grupo de Administración/Ajustes -->
+      <field name="perm_read" eval="True"/> <!-- Leer  -->
+      <field name="perm_create" eval="True"/> <!-- Crear -->
+      <field name="perm_write" eval="True"/> <!-- Modificar -->
+      <field name="perm_unlink" eval="True"/> <!-- Eliminar -->
+    </record>
   </data>
 </odoo>
