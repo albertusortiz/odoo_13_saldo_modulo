@@ -6,6 +6,7 @@
         <t t-foreach="docs" t-as="mov"> <!-- Con foreach iteramos en el arreglo y con t-as guardamos cada valor en una variable-->
           <t t-call="web.external_layout"> <!-- Este es para documentos externs-->
             <div class="page"> <!-- Clase que nos permite llamar a una hoja en blanco-->
+              <span t-esc="fecha"></span>
               <h1 align="center">Detalle de Movimiento</h1>
               <h5>Descripción: <t t-esc="mov.name"></t></h5>
               <span>Tipo: <span t-field="mov.type_move"></span></span> <!-- <span t-esc="mov.type_move"></span>-->
